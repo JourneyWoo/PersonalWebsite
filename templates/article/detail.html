@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Blog Content
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col-9">
+        <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
+        <div class="col-12 alert alert-success">
+            <div>
+                Author：{{ article.author }}
+                {% if user == article.author %}
+                    · <a href="#" onclick="confirm_delete()">Delete Blog</a>
+                    · <a href="{% url "article:article_update" article.id %}">
+                        Edit Blog
+                    </a>
+                {% endif %}
+            </div>
+            <div>
+                View：{{ article.total_views }}
+            </div>
+        </div>
+
+        <div class="col-12">
+            <p>{{ article.body|safe }}</p>
+        </div>
+
+
+        <hr>
+        {% if user.is_authenticated %}
+            <div>
+                <form
+                    action="{% url 'comment:post_comment' article.id %}"
+                    method="POST"
+                >
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="body">
+                            <strong>
+                                This is my comment...
+                            </strong>
+                        </label>
+                        <div>
+                            {{ comment_form.media }}
+                            {{ comment_form.body }}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary ">Send</button>
+                </form>
+            </div>
+        <br>
+        {% else %}
+        <br>
+        <h5 class="row justify-content-center">
+            Please <a href="{% url 'userprofile:login' %}"> Login in </a> and then send the comment
+        </h5>
+        <br>
+        {% endif %}
+
+        <h4>There are {{ comments.count }} Commends</h4>
+        <div>
+        {% for comment in comments %}
+            <hr>
+            <p>
+                <strong style="color: pink">
+                    {{ comment.user }}
+                </strong> at
+                <span style="color: green">
+                    {{ comment.created|date:"Y-m-d H:i:s" }}
+                </span> said:
+            </p>
+            <div>{{ comment.body|safe }}</div>
+        {% endfor %}
+        </div>
+    </div>
+
+        <div class="col-3 mt-4">
+            <h4><strong>Catalog</strong></h4>
+            <hr>
+            <div>
+                {{ toc|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirm_delete() {
+        layer.open({
+            title: "Confirm Delete",
+            content: "You sure to delete this Blog?",
+            yes: function(index, layero) {
+                location.href='{% url "article:article_delete" article.id %}'
+            },
+        })
+    }
+</script>
+{% endblock content %}
+
+
+{% block script %}
+
+
+<script>
+    $(".django-ckeditor-widget").removeAttr('style');
+</script>
+{% endblock script %}

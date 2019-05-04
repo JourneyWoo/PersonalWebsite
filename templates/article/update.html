@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% load staticfiles %}
+{% block title %} Update Blog {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <form method="post" action=".">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Blog Title</label>
+
+                    <input type="text" class="form-control" id="title" name="title" value="{{ article.title }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="column">Category</label>
+                    <select class="form-control"
+                            id="column"
+                            name="column"
+                         >
+                <option value="none">Please Choose Category..</option>
+            {% for column in columns %}
+                <option value="{{ column.id }}"
+                    {% if column.id == article.column.id %}
+                        selected
+                    {% endif %}
+                >
+                    {{ column }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+                <div class="form-group">
+                    <label for="body">Blog</label>
+                    <textarea type="text" class="form-control" id="body" name="body" rows="12">{{ article.body }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Finish</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% load staticfiles %}
+{% block title %} Write Blog {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <form method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="avatar">Blog Avatar</label>
+                    <input type="file" class="form-control-file" name="avatar" id="avatar">
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Blog Title</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+
+                <div class="form-group">
+                    <label for="column">Category</label>
+                    <select class="form-control"
+                    id="column"
+                    name="column">
+                <option value="none">Please Choose Category...</option>
+                {% for column in columns %}
+                    <option value="{{ column.id }}">{{ column }}</option>
+                {% endfor %}
+                </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tag</label>
+                    <input type="text"
+                        class="form-control col-3"
+                        id="tags"
+                        name="tags"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="body">Blog Content</label>
+                    <textarea type="text" class="form-control" id="body" name="body" rows="12"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Done!</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
