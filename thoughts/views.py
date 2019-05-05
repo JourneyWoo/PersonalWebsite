@@ -79,8 +79,8 @@ def thoughts_create(request):
         if thoughts_post_form.is_valid():
             new_thoughts = thoughts_post_form.save(commit=False)
             new_thoughts.author = User.objects.get(id=request.user.id)
-            if request.POST['column'] != 'none':
-                new_thoughts.column = ThoughtsColumn.objects.get(id=request.POST['column'])
+            # if request.POST['column'] != 'none':
+            #     new_thoughts.column = ThoughtsColumn.objects.get(id=request.POST['column'])
             new_thoughts.save()
             thoughts_post_form.save_m2m()
             return redirect("thoughts:thoughts_list")
@@ -99,7 +99,7 @@ def thoughts_delete(request, id):
     thoughts = ThoughtsPost.objects.get(id=id)
     if request.user != thoughts.author:
         return HttpResponse("Sorry, you don't have the permission to delete this thoughts.")
-        thoughts.delete()
+    thoughts.delete()
     return redirect("thoughts:thoughts_list")
 
 
@@ -117,7 +117,7 @@ def thoughts_update(request, id):
             #     thoughts.column = ThoughtsColumn.objects.get(id=request.POST['column'])
             # else:
             #     thoughts.column = None
-            #     thoughts.save()
+            thoughts.save()
             return redirect("thoughts:thoughts_detail", id=id)
         else:
             return HttpResponse("Form Wrong, please re fill")

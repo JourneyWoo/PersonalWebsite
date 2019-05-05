@@ -10,16 +10,7 @@
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-<a href="{% url 'thoughts:thoughts_list' %}?search={{ search }}">
-    Newest
-</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="{% url 'thoughts:thoughts_list' %}?order=total_views&search={{ search }}">
-                    Hottest
-                </a>
-            </li>
+
         </ol>
     </nav>
 
@@ -73,15 +64,16 @@
 
             <p>
 
-                <span style="color: green;">
-                    {{ thoughts.total_views }} views&nbsp;&nbsp;&nbsp;
-                </span>
                 <span style="color: blue;">
-                    {{ thoughts.created|date:'Y-m-d' }} post&nbsp;&nbsp;&nbsp;
+                    {{ thoughts.author}}
                 </span>
-                <span style="color: darkred;">
+                <span style="color: #616769;">
+                    {{ thoughts.created|date:'| Y-m-d' }} post&nbsp;&nbsp;&nbsp;
+                </span>
+                <span style="color: #616769;">
                     {{ thoughts.updated|date:'Y-m-d' }} update
                 </span>
+
             </p>
             <hr>
         </div>
