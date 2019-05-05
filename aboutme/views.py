@@ -1,11 +1,17 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView
 from .forms import FriendForm
 from .utils import PageLinksMixin
+from django.shortcuts import render, redirect
 from .models import (
     Friend,
 )
+
+
+# def Contact(request):
+#     return HttpResponseRedirect('aboutme/contact.html')
 
 
 class FriendList(PageLinksMixin, ListView):

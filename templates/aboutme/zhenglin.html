@@ -5,30 +5,58 @@
     <div class="container">
         <div class="row" style="text-align: center">
             <div class="col mt-4">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col">
+                        <div class="row align-items-center justify-content-center">
+                        <div class="col">
                         <h2>Zhenglin Wu</h2>
                         <div>Master student at University of Illinois at Urbana-Champaign (UIUC)</div>
                         <div>Graduated from Beijing University of Posts and Telecommunications (BUPT)</div>
                         <div>Passion in Software Development</div>
                         <div>Focus on Algorithms and Java Development</div>
-                    </div>
-                </div>
-            <br>
-            <br>
-            <br>
-                      <h3>Friend Circle</h3>
-                    <div>Welcome to my public friend circle, you can join and leave anytime</div>
-                    <div>Also, anyone can edit your information and even delete you on this website...</div>
-                    <div>So, please be careful and be cool :-)</div>
-                      <div class="mobile">
-                      <a href="{% url 'aboutme:friend_create_urlpattern' %}"
-                        class="button button-primary">Join my Friend Circle</a>
+                        </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3>Why I am here</h3>
+                        <div>You must be wondering why I chose UIUC...</div>
+                        <a href="{% url 'aboutme:whyiamhere' %}"
+                            class="button button-primary">Explore</a>
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3>Friend Circle</h3>
+                        <div>Welcome to my public friend circle, you can join and leave anytime</div>
+                        <div>Also, anyone can edit your information and even delete you on this website...</div>
+                        <div>So, please be careful and be cool :-)</div>
+                        <div class="mobile">
+                        <a href="{% url 'aboutme:friend_create_urlpattern' %}"
+                            class="button button-primary">Join my Friend Circle</a>
                           <br>
-                      <a href="{% url 'aboutme:friend_list_urlpattern' %}"
+                        <a href="{% url 'aboutme:friend_list_urlpattern' %}"
                         class="button button-primary">List my friends</a>
-                      </div>
-            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3>Contact me</h3>
+                        <div>It is always a hard time to know about me, fortunately, you can contact me</div>
+                        <a href="{% url 'aboutme:contactme' %}"
+                            class="button button-primary">Find me</a>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3>Intro to this website</h3>
+                        <div>It's tiny, but Powerful</div>
+                        <a href="{% url 'aboutme:intro' %}"
+                            class="button button-primary">Know more</a>
+
         </div>
     </div>
 

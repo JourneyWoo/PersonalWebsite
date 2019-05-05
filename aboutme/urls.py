@@ -9,6 +9,7 @@ from .views import (
 )
 
 app_name = 'aboutme'
+
 urlpatterns = [
     path(
         '',
@@ -16,23 +17,29 @@ urlpatterns = [
         name='zhenglin'
     ),
 
-    path('aboutme/',
+    path('friendcircle/',
          FriendList.as_view(),
          name='friend_list_urlpattern'),
 
-    path('aboutme/<int:pk>/',
+    path('friendcircle/<int:pk>/',
          FriendDetail.as_view(),
          name='friend_detail_urlpattern'),
 
-    path('aboutme/create/',
+    path('friendcircle/create/',
          FriendCreate.as_view(),
          name='friend_create_urlpattern'),
 
-    path('aboutme/<int:pk>/update',
+    path('friendcircle/<int:pk>/update',
          FriendUpdate.as_view(),
          name='friend_update_urlpattern'),
 
-    path('aboutme/<int:pk>/delete/',
+    path('friendcircle/<int:pk>/delete/',
          FriendDelete.as_view(),
          name='friend_delete_urlpattern'),
+
+    path('contact', TemplateView.as_view(template_name='aboutme/contact.html'), name='contactme'),
+
+    path('whyiamhere', TemplateView.as_view(template_name='aboutme/whyiamhere.html'), name='whyiamhere'),
+
+    path('intro', TemplateView.as_view(template_name='aboutme/intro.html'), name='intro'),
 ]
