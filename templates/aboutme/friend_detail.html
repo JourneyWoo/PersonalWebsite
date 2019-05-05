@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+        <div class="row" style="text-align: center">
+            <div class="col mt-4">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col">
+    <h2>{{ friend }}</h2>
+    <ul class="inline">
+
+          <a href="{{ friend.get_update_url }}"
+          class="button">
+            Edit Friend</a>
+            <br>
+          <a href="{{ friend.get_delete_url }}"
+          class="button">
+            Delete Friend</a>
+    </ul>
+                    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

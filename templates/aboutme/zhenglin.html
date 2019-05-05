@@ -6,17 +6,34 @@
         <div class="row" style="text-align: center">
             <div class="col mt-4">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-6 col-sm-5 col-md-4 col-lg-3 offset-lg-2 offset-md-1">
-                        <img src="{% static 'img/myself.jpg' %}" style="max-width: 100%; border-radius: 10%">
-                    </div>
                     <div class="col">
                         <h2>Zhenglin Wu</h2>
-                        <div>Zhenglin Wu is a master student at UIUC, and he has passion in Software Development.</div>
+                        <div>Master student at University of Illinois at Urbana-Champaign (UIUC)</div>
+                        <div>Graduated from Beijing University of Posts and Telecommunications (BUPT)</div>
+                        <div>Passion in Software Development</div>
+                        <div>Focus on Algorithms and Java Development</div>
+                        <div>Focus on Algorithms and Java Development</div>
                     </div>
                 </div>
-
+            <br>
+            <br>
+            <br>
+                      <h3>Friend Circle</h3>
+                    <div>Welcome to my public friend circle, you can join and leave anytime</div>
+                    <div>Also, anyone can edit your information and even delete you on this website...</div>
+                    <div>So, please be careful and be cool :-)</div>
+                      <div class="mobile">
+                      <a href="{% url 'aboutme:friend_create_urlpattern' %}"
+                        class="button button-primary">Join my Friend Circle</a>
+                          <br>
+                      <a href="{% url 'aboutme:friend_list_urlpattern' %}"
+                        class="button button-primary">List my friends</a>
+                      </div>
             </div>
         </div>
     </div>
 
 {% endblock %}
+
+
+

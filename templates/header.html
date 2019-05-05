@@ -8,18 +8,23 @@
           </li>
 
 
-
+        &nbsp
+      &nbsp
         <li class="nav-item">
             <a class="nav-link" href="{% url 'article:article_list' %}">blogs</a>
         </li>
-
+&nbsp
+      &nbsp
           <li class="nav-item">
             <a class="nav-link" href="{% url 'thoughts:thoughts_list' %}">thoughts</a>
         </li>
-
+&nbsp
+      &nbsp
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'album:album_list' %}">photos</a>
+            <a class="nav-link" href="{% url 'album:album_list' %}">photo booth</a>
           </li>
+      &nbsp
+      &nbsp
 
 
 
@@ -34,7 +39,7 @@
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                  <a class="dropdown-item" href="{% url 'article:article_create' %}">Write blog</a>
-                <a class="dropdown-item" href="{% url 'thoughts:thoughts_create' %}">Record thoughs</a>
+                <a class="dropdown-item" href="{% url 'thoughts:thoughts_create' %}">Record your thoughts</a>
                  <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>Your profile</a>
                  <a class="dropdown-item" href="#" onclick="user_delete()">Delete yourself</a>
                  <a class="dropdown-item" href='{% url "userprofile:logout" %}'>Log out</a>

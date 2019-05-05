@@ -8,47 +8,9 @@
 {% block content %}
 
 <div class="container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-
-        </ol>
-    </nav>
-
-    <div class="row">
-        <div class="col-auto mr-auto">
-            <form class="form-inline" >
-                <label class="sr-only">content</label>
-                <input type="text"
-                    class="form-control mb-2 mr-sm-2"
-                    name="search"
-                    placeholder="search thoughts"
-                    required
-                >
-            </form>
-        </div>
-    </div>
-
-    {% if search %}
-        {% if thoughts %}
-            <h4><span style="color: red">"{{ search }}"</span>'s search results:</h4>
-            <hr>
-        {% else %}
-            <h4>Nothing<span style="color: red">"{{ search }}"</span> related thoughts.</h4>
-            <hr>
-        {% endif %}
-    {% endif %}
-
-
 <div class="row mt-2">
     {% for thoughts in thoughts %}
-
-
-
-
         <div class="col">
-
-
-
 
             <h4>
                 <b>
@@ -59,11 +21,7 @@
                     </a>
                 </b>
             </h4>
-
-
-
             <p>
-
                 <span style="color: blue;">
                     {{ thoughts.author}}
                 </span>
@@ -86,9 +44,9 @@
     <div class="m-auto">
         <span class="step-links">
             {% if thoughts.has_previous %}
-                <a href="?page=1&order={{ order }}&search={{ search }}" class="btn btn-success">&laquo; 1</a>
+                <a href="?page=1&order={{ order }}" class="btn btn-success">&laquo; 1</a>
                 <span>...</span>
-                <a href="?page={{ thoughts.previous_page_number }}&order={{ order }}&search={{ search }}" class="btn btn-secondary">...</a>
+                <a href="?page={{ thoughts.previous_page_number }}&order={{ order }}" class="btn btn-secondary">...</a>
             {% endif %}
 
             <span class="current btn btn-danger btn-lg">
@@ -96,9 +54,9 @@
             </span>
 
             {% if thoughts.has_next %}
-                <a href="?page={{ thoughts.next_page_number }}&order={{ order }}&search={{ search }}" class="btn btn-secondary">{{ thoughts.next_page_number }}</a>
+                <a href="?page={{ thoughts.next_page_number }}&order={{ order }}" class="btn btn-secondary">{{ thoughts.next_page_number }}</a>
                 <span>...</span>
-                <a href="?page={{ thoughts.paginator.num_pages }}&order={{ order }}&search={{ search }}"class="btn btn-success">{{ thoughts.paginator.num_pages }} &raquo;</a>
+                <a href="?page={{ thoughts.paginator.num_pages }}&order={{ order }}"class="btn btn-success">{{ thoughts.paginator.num_pages }} &raquo;</a>
             {% endif %}
         </span>
     </div>

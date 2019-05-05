@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Friend List
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row" style="text-align: center">
+            <div class="col mt-4">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col">
+  <h2>Friend List</h2>
+
+  <ul>
+    {% for friend in friend_list %}
+
+        <a href="{{ friend.get_absolute_url }}">
+          {{ friend }}</a>
+        <br>
+    {% empty %}
+      <li><em>There are currently no friends available.</em></li>
+    {% endfor %}
+  </ul>
+                    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

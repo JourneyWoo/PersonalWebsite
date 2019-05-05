@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Friend
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row" style="text-align: center">
+            <div class="col mt-4">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col">
+    <form
+        action="{{ friend.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Friend</button>
+    </form>
+                                            </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
