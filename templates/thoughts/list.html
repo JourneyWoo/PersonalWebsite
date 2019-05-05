@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Homepage
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+<a href="{% url 'thoughts:thoughts_list' %}?search={{ search }}">
+    Newest
+</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'thoughts:thoughts_list' %}?order=total_views&search={{ search }}">
+                    Hottest
+                </a>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-auto mr-auto">
+            <form class="form-inline" >
+                <label class="sr-only">content</label>
+                <input type="text"
+                    class="form-control mb-2 mr-sm-2"
+                    name="search"
+                    placeholder="search thoughts"
+                    required
+                >
+            </form>
+        </div>
+    </div>
+
+    {% if search %}
+        {% if thoughts %}
+            <h4><span style="color: red">"{{ search }}"</span>'s search results:</h4>
+            <hr>
+        {% else %}
+            <h4>Nothing<span style="color: red">"{{ search }}"</span> related thoughts.</h4>
+            <hr>
+        {% endif %}
+    {% endif %}
+
+
+<div class="row mt-2">
+    {% for thoughts in thoughts %}
+
+
+
+
+        <div class="col">
+
+
+
+
+            <h4>
+                <b>
+                    <a href="{% url 'thoughts:thoughts_detail' thoughts.id %}"
+                       style="color: black;"
+                    >
+                        {{ thoughts.title }}
+                    </a>
+                </b>
+            </h4>
+
+
+
+            <p>
+
+                <span style="color: green;">
+                    {{ thoughts.total_views }} views&nbsp;&nbsp;&nbsp;
+                </span>
+                <span style="color: blue;">
+                    {{ thoughts.created|date:'Y-m-d' }} post&nbsp;&nbsp;&nbsp;
+                </span>
+                <span style="color: darkred;">
+                    {{ thoughts.updated|date:'Y-m-d' }} update
+                </span>
+            </p>
+            <hr>
+        </div>
+        <hr style="width: 100%;"/>
+    {% endfor %}
+</div>
+
+
+<div class="pagination row">
+    <div class="m-auto">
+        <span class="step-links">
+            {% if thoughts.has_previous %}
+                <a href="?page=1&order={{ order }}&search={{ search }}" class="btn btn-success">&laquo; 1</a>
+                <span>...</span>
+                <a href="?page={{ thoughts.previous_page_number }}&order={{ order }}&search={{ search }}" class="btn btn-secondary">...</a>
+            {% endif %}
+
+            <span class="current btn btn-danger btn-lg">
+                {{ thoughts.number }}
+            </span>
+
+            {% if thoughts.has_next %}
+                <a href="?page={{ thoughts.next_page_number }}&order={{ order }}&search={{ search }}" class="btn btn-secondary">{{ thoughts.next_page_number }}</a>
+                <span>...</span>
+                <a href="?page={{ thoughts.paginator.num_pages }}&order={{ order }}&search={{ search }}"class="btn btn-success">{{ thoughts.paginator.num_pages }} &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+</div>
+{% endblock content %}

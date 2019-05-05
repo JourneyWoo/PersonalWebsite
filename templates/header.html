@@ -14,6 +14,10 @@
         </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'thoughts:thoughts_list' %}">thoughts</a>
+        </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'album:album_list' %}">photos</a>
           </li>
 
@@ -30,6 +34,7 @@
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                  <a class="dropdown-item" href="{% url 'article:article_create' %}">Write blog</a>
+                <a class="dropdown-item" href="{% url 'thoughts:thoughts_create' %}">Record thoughs</a>
                  <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>Your profile</a>
                  <a class="dropdown-item" href="#" onclick="user_delete()">Delete yourself</a>
                  <a class="dropdown-item" href='{% url "userprofile:logout" %}'>Log out</a>

@@ -26,6 +26,7 @@ urlpatterns = [
     path('comment/', include('comment.urls', namespace='comment')),
     path('album/', include('album.urls', namespace='album')),
     path('aboutme/', include('aboutme.urls', namespace='aboutme')),
+    path('thoughts/', include('thoughts.urls', namespace='thoughts')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

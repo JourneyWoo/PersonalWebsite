@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Thoughts Content
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col-9">
+        <h1 class="col-12 mt-4 mb-4">{{ thoughts.title }}</h1>
+        <div class="col-12 alert alert-success">
+            <div>
+                Author：{{ thoughts.author }}
+                {% if user == thoughts.author %}
+                    · <a href="#" onclick="confirm_delete()">Delete Thoughts</a>
+                    · <a href="{% url "thoughts:thoughts_update" thoughts.id %}">
+                        Edit Thoughts
+                    </a>
+                {% endif %}
+            </div>
+            <div>
+                View：{{ thoughts.total_views }}
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>
+
+<script>
+    function confirm_delete() {
+        layer.open({
+            title: "Confirm Delete",
+            content: "You sure to delete this Thoughts?",
+            yes: function(index, layero) {
+                location.href='{% url "thoughts:thoughts_delete" thoughts.id %}'
+            },
+        })
+    }
+</script>
+{% endblock content %}
+
+
+{% block script %}
+
+
+<script>
+    $(".django-ckeditor-widget").removeAttr('style');
+</script>
+{% endblock script %}
