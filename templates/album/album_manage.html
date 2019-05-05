@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Photo Booth{% endblock %}
+{% block content %}
+    <br/>
+    {% if user.is_superuser %}
+        <div>
+            <a class="layui-btn layui-btn-normal" href="{% url 'album:album_upload' %}">Image from local</a>
+            <hr/>
+        </div>
+        {% for image in album %}
+            <table class="layui-table" lay-size="sm">
+                <colgroup>
+                    <col id="col">
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Upload Date</th>
+                    <th>Location</th>
+                    <th>Delete?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img src="{{ image.url }}" style="max-height: 100px"></td>
+                    <td>{{ image.title }}</td>
+                    <td>{{ image.created }}</td>
+                    <td>{{ image.url|truncatechars:50 }}</td>
+                    <td><a class="layui-btn layui-btn-danger layuibtn layui-btn-xs"
+                           href="{% url 'album:album_delete' image.id %}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock %}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from article.models import ArticlePost
 from ckeditor.fields import RichTextField
 
+
 class Comment(models.Model):
     article = models.ForeignKey(
         ArticlePost,

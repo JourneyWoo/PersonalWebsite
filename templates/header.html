@@ -1,32 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Journey Blog</a>
+    <a class="navbar-brand" href="{% url 'aboutme:zhenglin' %}">Zhenglin's Journey</a>
     <div>
       <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'article:article_list' %}">Blogs</a>
-        </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'article:article_create' %}">Write Blog</a>
+            <a class="nav-link" href="{% url 'aboutme:zhenglin' %}">Me</a>
+          </li>
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'article:article_list' %}">blogs</a>
         </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'album:album_list' %}">photos</a>
+          </li>
+
+
+
+
+
               {% if user.is_authenticated %}
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{ user.username }}
             </a>
+
+
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="#" onclick="user_delete()">delete user</a>
-              <a class="dropdown-item" href='{% url "userprofile:logout" %}'>log out</a>
-                <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>Bio</a>
+                 <a class="dropdown-item" href="{% url 'article:article_create' %}">Write blog</a>
+                 <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>Your profile</a>
+                 <a class="dropdown-item" href="#" onclick="user_delete()">Delete yourself</a>
+                 <a class="dropdown-item" href='{% url "userprofile:logout" %}'>Log out</a>
             </div>
         </li>
     {% else %}
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'userprofile:login' %}">login in</a>
+            <a class="nav-link" href="{% url 'userprofile:login' %}">Login in</a>
         </li>
     {% endif %}
         {% if user.is_authenticated %}
-                        <script>
+            <script>
         function user_delete() {
             layer.open({
                 title: "confirm delete",
@@ -36,7 +51,7 @@
                 },
             })
         }
-    </script>
+            </script>
 {% endif %}
 
       </ul>

@@ -24,6 +24,8 @@ urlpatterns = [
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     path('password-reset/', include('password_reset.urls')),
     path('comment/', include('comment.urls', namespace='comment')),
+    path('album/', include('album.urls', namespace='album')),
+    path('aboutme/', include('aboutme.urls', namespace='aboutme')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
